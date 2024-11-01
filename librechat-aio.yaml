@@ -1,105 +1,83 @@
----
 version: 1.1.6
+
 cache: true
+
+# interface:
+#   privacyPolicy:
+#     externalUrl: 'https://librechat.ai/privacy-policy'
+#     openNewTab: true
+#   termsOfService:
+#     externalUrl: 'https://librechat.ai/tos'
+#     openNewTab: true
+
 registration:
   socialLogins:
-    - discord
-    - facebook
-    - github
-    - google
-    - openid
+    - "discord"
+    - "facebook"
+    - "github"
+    - "google"
+    - "openid"
+
 endpoints:
   custom:
-    - name: HuggingFace
-      apiKey: user_provided
-      baseURL: https://api-inference.huggingface.co/v1
+    # HuggingFace
+    # https://huggingface.co/settings/tokens
+    - name: 'HuggingFace'
+      apiKey: "user_provided"
+      baseURL: 'https://api-inference.huggingface.co/v1'
       models:
         default:
-          - codellama/CodeLlama-34b-Instruct-hf
-          - google/gemma-1.1-2b-it
-          - google/gemma-1.1-7b-it
-          - HuggingFaceH4/starchat2-15b-v0.1
-          - HuggingFaceH4/zephyr-7b-beta
-          - meta-llama/Meta-Llama-3-8B-Instruct
-          - microsoft/Phi-3-mini-4k-instruct
-          - mistralai/Mistral-7B-Instruct-v0.1
-          - mistralai/Mistral-7B-Instruct-v0.2
-          - mistralai/Mixtral-8x7B-Instruct-v0.1
-          - NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO
+          - "codellama/CodeLlama-34b-Instruct-hf"
+          - "google/gemma-1.1-2b-it"
+          - "google/gemma-1.1-7b-it"
+          - "HuggingFaceH4/starchat2-15b-v0.1"
+          - "HuggingFaceH4/zephyr-7b-beta"
+          - "meta-llama/Meta-Llama-3-8B-Instruct"
+          - "microsoft/Phi-3-mini-4k-instruct"
+          - "mistralai/Mistral-7B-Instruct-v0.1"
+          - "mistralai/Mistral-7B-Instruct-v0.2"
+          - "mistralai/Mixtral-8x7B-Instruct-v0.1"
+          - "NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO"
         fetch: true
       titleConvo: true
-      titleModel: NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO
+      titleModel: "NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO"
       dropParams:
-        - top_p
-    - name: OpenRouter
-      apiKey: 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
-      baseURL: https://openrouter.ai/api/v1
+        - "top_p"
+
+    # OpenRouter.ai
+    # Model list: https://openrouter.ai/models
+    # Script to fetch models: https://github.com/LibreChat-AI/librechat-config-yaml/blob/main/scripts/openrouter.py
+    - name: "OpenRouter"
+      apiKey: "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"
+      baseURL: "https://openrouter.ai/api/v1"
       models:
         default:
-          - openrouter/auto
-          - ---FREE---
-          - google/gemma-2-9b-it:free
-          - gryphe/mythomist-7b:free
-          - huggingfaceh4/zephyr-7b-beta:free
-          - mattshumer/reflection-70b:free
-          - meta-llama/llama-3-8b-instruct:free
-          - meta-llama/llama-3.1-8b-instruct:free
-          - microsoft/phi-3-medium-128k-instruct:free
-          - microsoft/phi-3-mini-128k-instruct:free
-          - mistralai/mistral-7b-instruct:free
-          - mistralai/pixtral-12b:free
-          - nousresearch/hermes-3-llama-3.1-405b:free
-          - openchat/openchat-7b:free
-          - qwen/qwen-2-7b-instruct:free
-          - qwen/qwen-2-vl-7b-instruct:free
-          - undi95/toppy-m-7b:free
-          - ---BETA---
-          - anthropic/claude-3.5-sonnet:beta
-          - ---EXTENDED---
-          - meta-llama/llama-3-8b-instruct:extended
-          - neversleep/llama-3-lumimaid-8b:extended
-          - nousresearch/hermes-3-llama-3.1-405b:extended
-          - openai/gpt-4o:extended
-          - undi95/remm-slerp-l2-13b:extended
-          - ---ANTHROPIC---
-          - anthropic/claude-3-haiku
-          - anthropic/claude-3-opus
-          - anthropic/claude-3-sonnet
-          - anthropic/claude-3.5-sonnet
-          - anthropic/claude-instant-1
-          - anthropic/claude-instant-1.0
-          - anthropic/claude-instant-1.1
-          - ---COHERE---
-          - cohere/command-r-plus-08-2024
-          - ---GOOGLE---
-          - google/gemini-flash-1.5
-          - google/gemini-pro
-          - google/gemini-pro-1.5
-          - google/gemini-pro-vision
-          - meta-llama/llama-3.1-405b-instruct
-          - ---OPENAI---
-          - openai/chatgpt-4o-latest
-          - openai/gpt-3.5-turbo
-          - openai/gpt-4-vision-preview
-          - openai/gpt-4o-2024-05-13
-          - openai/gpt-4o-2024-08-06
-          - openai/gpt-4o-mini
-          - openai/gpt-4o-mini-2024-07-18
-          - openai/o1-mini
-          - openai/o1-mini-2024-09-12
-          - openai/o1-preview
-          - openai/o1-preview-2024-09-12
-          - ---PERPLEXITY---
-          - perplexity/llama-3.1-sonar-large-128k-chat
-          - perplexity/llama-3.1-sonar-large-128k-online
-          - ---QWEN---
-          - qwen/qwen-110b-chat
+          - "openrouter/auto"
+          - "---FREE---"
+          - "google/gemma-2-9b-it:free"
+          - "gryphe/mythomist-7b:free"
+          - "huggingfaceh4/zephyr-7b-beta:free"
+          - "mattshumer/reflection-70b:free"
+          - "meta-llama/llama-3-8b-instruct:free"
+          - "meta-llama/llama-3.1-8b-instruct:free"
+          - "microsoft/phi-3-medium-128k-instruct:free"
+          - "microsoft/phi-3-mini-128k-instruct:free"
+          - "mistralai/mistral-7b-instruct:free"
+          - "mistralai/pixtral-12b:free"
+          - "nousresearch/hermes-3-llama-3.1-405b:free"
+          - "openchat/openchat-7b:free"
+          - "qwen/qwen-2-7b-instruct:free"
+          - "qwen/qwen-2-vl-7b-instruct:free"
+          - "undi95/toppy-m-7b:free"
+          - "---BETA---"
+
+          # Additional models...
         fetch: false
       dropParams:
-        - stop
+        - "stop"
       titleConvo: true
-      titleModel: openai/gpt-4o-mini
+      titleModel: "openai/gpt-4o-mini"
       summarize: false
-      summaryModel: openai/gpt-4o-mini
+      summaryModel: "openai/gpt-4o-mini"
       forcePrompt: false
-      modelDisplayLabel: OpenRouter
+      modelDisplayLabel: "OpenRouter"
