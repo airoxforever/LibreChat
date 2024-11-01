@@ -123,5 +123,3 @@ endpoints:
       summaryModel: "openai/gpt-4o-mini"
       forcePrompt: false
       modelDisplayLabel: "OpenRouter"
-
-    
