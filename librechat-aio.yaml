@@ -5,6 +5,21 @@ cache: true
 registration:
   socialLogins: ["discord", "facebook", "github", "google", "openid"]
 
+speech:
+  speechTab:
+    conversationMode: true
+    advancedMode: false
+    speechToText:
+      engineSTT: "openai"
+      languageSTT: "English (US)"
+      autoTranscribeAudio: true
+      decibelValue: -45
+      autoSendText: 0
+  stt:
+    openai:
+      apiKey: "${OPENAI_API_KEY}"
+      model: "whisper-1"
+
 endpoints:
   custom:
     # HuggingFace

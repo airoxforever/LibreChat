@@ -162,3 +162,58 @@ For your use case, I recommend:
 Would you like me to provide more details about any of these aspects? I can also help you set up the GitHub integration if needed.
 
 Also, regarding OpenRouter - yes, you can add it as a secret! It's actually recommended to add API keys as secrets rather than variables for better security.
+
+## HuggingFace Space Configuration
+
+### Required Variables and Secrets
+
+#### Secrets (Sensitive Information)
+```plaintext
+OPENAI_API_KEY         # Required for OpenAI models and Whisper STT
+OPENROUTER_KEY         # Required for OpenRouter access
+GOOGLE_KEY             # Required for Gemini models
+```
+
+#### Variables (Configuration Settings)
+```plaintext
+ENDPOINTS              # Set to: openAI,google,custom
+PORT                   # Set to: 3000
+HOST                   # Set to: 0.0.0.0
+ALLOW_EMAIL_LOGIN      # Set to: true
+ALLOW_REGISTRATION     # Set to: true (if you want users to register)
+DEBUG_LOGGING          # Set to: true (helps with troubleshooting)
+```
+
+### GitHub Integration Setup
+
+To connect/reconnect your Space to GitHub:
+
+1. Go to your Space settings by clicking the ⚙️ icon
+2. Look for "Repository" section
+3. Click "Visit repository" to see if there's an existing connection
+4. If no connection exists:
+   - Click "Configure repository"
+   - Choose "Import from Git"
+   - Enter your GitHub repository URL
+   - Select the branch you want to deploy (usually 'main' or 'master')
+
+To verify the connection:
+1. Go to the "Files" tab in your Space
+2. Look for a small GitHub icon next to the files
+3. Check the "Logs" tab for deployment activities
+
+#### Automatic Rebuilds
+To ensure your Space rebuilds when you push to GitHub:
+1. Go to your Space settings
+2. Look for "Build Triggers" section
+3. Enable "Rebuild on source code update"
+
+#### Manual Rebuild
+If automatic rebuilds aren't working:
+1. Go to your Space settings
+2. Find the "Factory reset" section
+3. Click "Factory reset" to rebuild from your GitHub source
+
+> Note: Factory reset will rebuild the entire Space from scratch using your GitHub repository as the source. This is useful when you want to ensure all your GitHub changes are applied.
+
+Would you like me to add more details about any of these sections?
