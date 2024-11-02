@@ -45,18 +45,6 @@ endpoints:
       titleModel: "NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO"
       dropParams: ["top_p"]
 
-    # Add Google configuration with safety settings set to minimum
-    - name: "google"
-      apiKey: "${GOOGLE_KEY}"
-      models:
-        default: ["gemini-pro", "gemini-pro-vision"]
-      # Set all safety settings to lowest level
-      safetySettings:
-        HARM_CATEGORY_SEXUALLY_EXPLICIT: "BLOCK_ONLY_HIGH"
-        HARM_CATEGORY_HATE_SPEECH: "BLOCK_ONLY_HIGH"
-        HARM_CATEGORY_HARASSMENT: "BLOCK_ONLY_HIGH"
-        HARM_CATEGORY_DANGEROUS_CONTENT: "BLOCK_ONLY_HIGH"
-
     # OpenRouter.ai
     # Model list: https://openrouter.ai/models
     - name: "OpenRouter"
